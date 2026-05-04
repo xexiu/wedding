@@ -29,6 +29,11 @@ type SectionUiText = {
   rsvpRequestedSongsLabel: string;
   rsvpSubmitSuccess: string;
   rsvpSubmitError: string;
+  rsvpModalSuccessTitle: string;
+  rsvpModalSuccessBody: string;
+  rsvpModalErrorTitle: string;
+  rsvpModalServerErrorBody: string;
+  rsvpModalDismiss: string;
   rsvpContactLabel: string;
   photoMosaicTitle: string;
   photoMosaicPlaceholder: string;
@@ -65,6 +70,11 @@ const SECTION_UI_TEXT_EN: SectionUiText = {
   rsvpRequestedSongsLabel: "Requested song(s)",
   rsvpSubmitSuccess: "Your RSVP has been saved",
   rsvpSubmitError: "Could not save RSVP. Please try again.",
+  rsvpModalSuccessTitle: "Thank you",
+  rsvpModalSuccessBody: "Your RSVP was saved successfully.",
+  rsvpModalErrorTitle: "Please check these fields",
+  rsvpModalServerErrorBody: "Something went wrong while saving. Please try again.",
+  rsvpModalDismiss: "Close",
   rsvpContactLabel: "Contact",
   photoMosaicTitle: "Photo Mosaic",
   photoMosaicPlaceholder: "Drop your photos here later. Current columns config:",
@@ -101,6 +111,11 @@ const SECTION_UI_TEXT_ES: SectionUiText = {
   rsvpRequestedSongsLabel: "Cancion(es) solicitada(s)",
   rsvpSubmitSuccess: "Tu confirmacion fue guardada",
   rsvpSubmitError: "No se pudo guardar la confirmacion. Intenta de nuevo.",
+  rsvpModalSuccessTitle: "Gracias",
+  rsvpModalSuccessBody: "Tu confirmación se guardó correctamente.",
+  rsvpModalErrorTitle: "Revisa estos campos",
+  rsvpModalServerErrorBody: "No pudimos guardar tu confirmación. Intenta de nuevo.",
+  rsvpModalDismiss: "Cerrar",
   rsvpContactLabel: "Contacto",
   photoMosaicTitle: "Mosaico de fotos",
   photoMosaicPlaceholder: "Agrega tus fotos aqui mas tarde. Configuracion actual de columnas:",
@@ -137,6 +152,11 @@ const SECTION_UI_TEXT_RO: SectionUiText = {
   rsvpRequestedSongsLabel: "Melodie(i) dorita(e)",
   rsvpSubmitSuccess: "Confirmarea ta a fost salvata",
   rsvpSubmitError: "Nu am putut salva confirmarea. Incearca din nou.",
+  rsvpModalSuccessTitle: "Mulțumim",
+  rsvpModalSuccessBody: "Confirmarea ta a fost salvată cu succes.",
+  rsvpModalErrorTitle: "Verifică aceste câmpuri",
+  rsvpModalServerErrorBody: "Nu am putut salva confirmarea. Încearcă din nou.",
+  rsvpModalDismiss: "Închide",
   rsvpContactLabel: "Contact",
   photoMosaicTitle: "Mosaic foto",
   photoMosaicPlaceholder: "Adauga fotografiile aici mai tarziu. Configuratia curenta de coloane:",
