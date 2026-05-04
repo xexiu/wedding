@@ -24,7 +24,8 @@ export type CountdownParts = {
   minutes: string;
 };
 
-const DEFAULT_COUNTDOWN: CountdownParts = {
+/** Stable placeholder until client mounts (avoids SSR/client `Date.now()` mismatch). */
+export const DEFAULT_COUNTDOWN: CountdownParts = {
   days: "000",
   hours: "00",
   minutes: "00"
@@ -35,7 +36,8 @@ function pad(value: number, length: number): string {
 }
 
 export function getCountdownParts(weddingDate: string, nowMs: number): CountdownParts {
-  const targetMs = new Date(`${weddingDate}T00:00:00`).getTime();
+  // UTC midnight so server (often UTC) and browser agree on the same instant (fixes hydration).
+  const targetMs = new Date(`${weddingDate}T00:00:00Z`).getTime();
   if (Number.isNaN(targetMs)) {
     return DEFAULT_COUNTDOWN;
   }

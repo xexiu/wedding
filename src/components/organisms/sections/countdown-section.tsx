@@ -1,7 +1,7 @@
 "use client";
 
 import { SectionShell } from "@/components/atoms/section-shell";
-import { getCountdownParts } from "@/components/organisms/sections/helpers";
+import { DEFAULT_COUNTDOWN, getCountdownParts } from "@/components/organisms/sections/helpers";
 import { formatWeddingDateLabel } from "@/lib/format-wedding-date";
 import { getSectionPixelTokens } from "@/components/organisms/sections/pixel-tokens";
 import { CountdownSectionProps } from "@/components/organisms/sections/types";
@@ -9,16 +9,21 @@ import { getSectionUiText } from "@/components/organisms/sections/ui-text";
 import { useEffect, useMemo, useState } from "react";
 
 export function CountdownSection({ details, props, locale, cadencePreset, theme }: CountdownSectionProps) {
-  const [nowMs, setNowMs] = useState(() => Date.now());
+  /** `null` until mount so SSR and the first client render match (no `Date.now()` hydration drift). */
+  const [nowMs, setNowMs] = useState<number | null>(null);
   const uiText = getSectionUiText(locale);
   const SECTION_PIXEL_TOKENS = useMemo(() => getSectionPixelTokens(cadencePreset), [cadencePreset]);
 
   useEffect(() => {
+    setNowMs(Date.now());
     const intervalId = window.setInterval(() => setNowMs(Date.now()), 60000);
     return () => window.clearInterval(intervalId);
   }, []);
 
-  const countdown = useMemo(() => getCountdownParts(details.weddingDate, nowMs), [details.weddingDate, nowMs]);
+  const countdown = useMemo(
+    () => (nowMs == null ? DEFAULT_COUNTDOWN : getCountdownParts(details.weddingDate, nowMs)),
+    [details.weddingDate, nowMs]
+  );
   const weddingDateLabel = useMemo(
     () => formatWeddingDateLabel(details.weddingDate, locale),
     [details.weddingDate, locale]
