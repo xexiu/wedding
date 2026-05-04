@@ -1,0 +1,1896 @@
+.invitation-amorea-page {
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--layout-card-bg, #ffffff);
+  color: #1a1a2e;
+}
+
+#site-theme-root.invitation-amorea-page {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.invitation-amorea-hero,
+.invitation-amorea-section,
+.invitation-amorea-carousel {
+  border: var(--layout-card-border-width, 1px) solid var(--layout-card-border-color, #dce4f0);
+  border-radius: var(--layout-card-radius, 10px);
+  background: var(--layout-card-bg, #fff);
+  box-shadow: var(--layout-card-shadow, 0 6px 22px rgba(28, 52, 95, 0.08));
+}
+
+.invitation-amorea-carousel.amorea-cover-section {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.amorea-cover {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 48px 32px 40px;
+  background: var(--layout-card-bg, #fff);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.amorea-cover.amorea-hero-wrap {
+  gap: 0;
+}
+
+.amorea-cover-floral-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  font-size: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 10% 60%, rgba(74, 109, 167, 0.15) 30px, transparent 30px),
+    radial-gradient(circle at 25% 30%, rgba(74, 109, 167, 0.1) 20px, transparent 20px),
+    radial-gradient(circle at 40% 70%, rgba(74, 109, 167, 0.12) 25px, transparent 25px),
+    radial-gradient(circle at 60% 40%, rgba(74, 109, 167, 0.1) 18px, transparent 18px),
+    radial-gradient(circle at 75% 65%, rgba(74, 109, 167, 0.14) 22px, transparent 22px),
+    radial-gradient(circle at 90% 35%, rgba(74, 109, 167, 0.1) 20px, transparent 20px),
+    linear-gradient(to bottom, rgba(74, 109, 167, 0.04), transparent);
+}
+
+.amorea-floral-tl,
+.amorea-floral-tr {
+  position: absolute;
+  width: 140px;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.amorea-floral-tl {
+  top: -10px;
+  left: -10px;
+}
+
+.amorea-floral-tr {
+  top: -10px;
+  right: -10px;
+  transform: rotate(90deg);
+}
+
+.amorea-cover-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* Hero: image stack only (envelope is a separate module below) */
+.amorea-hero-stack-only .amorea-cover {
+  min-height: 0;
+}
+
+.amorea-hero-stack-only .amorea-cover-inner {
+  padding: 12px 0 8px;
+}
+
+/* Stacked image carousel (CodePen-style: stack + meta column) */
+.amorea-img-stack {
+  width: 100%;
+  margin: 0 auto 22px;
+}
+
+.amorea-img-stack--layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px 28px;
+  align-items: center;
+  width: 100%;
+  max-width: 720px;
+}
+
+@media (min-width: 640px) {
+  .amorea-img-stack--layout {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+}
+
+.amorea-img-stack__col--stack {
+  min-width: 0;
+}
+
+.amorea-img-stack__col--meta {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: left;
+}
+
+.amorea-img-stack__counter {
+  margin: 0;
+  font-size: calc(11px * var(--layout-body-scale, 1));
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8a8a9a;
+}
+
+.amorea-img-stack__title {
+  margin: 0;
+  font-size: calc(22px * var(--card-title-size-scale, 1));
+  font-weight: 600;
+  line-height: 1.2;
+  color: #1a1a2e;
+}
+
+.amorea-img-stack__subtitle {
+  margin: 0 0 4px;
+  font-size: calc(15px * var(--card-body-size-scale, 1));
+  font-style: italic;
+  line-height: 1.45;
+  color: #4a4a6a;
+}
+
+.amorea-img-stack--empty {
+  padding: 16px;
+  text-align: center;
+  color: #8a8a9a;
+  font-size: calc(12px * var(--layout-body-scale, 1));
+  border: 1px dashed #dce4f0;
+  border-radius: 12px;
+}
+
+.amorea-img-stack__viewport {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1;
+  max-height: min(92vw, 420px);
+  margin-inline: auto;
+}
+
+.amorea-img-stack__card {
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75em;
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(28, 52, 95, 0.18);
+  border: 2px solid rgba(255, 255, 255, 0.65);
+  transition: transform 0.8s cubic-bezier(0.45, 0, 0.2, 1), opacity 0.55s ease;
+  will-change: transform, opacity;
+  transform-origin: center center;
+  pointer-events: none;
+}
+
+.amorea-img-stack__card--top {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.amorea-img-stack__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+.amorea-img-stack__controls {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2em;
+  margin-top: 8px;
+}
+
+.amorea-img-stack__btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0;
+  background: #1e1e2e;
+  color: #fff;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.amorea-img-stack__btn:hover {
+  background: #2a2a3d;
+}
+
+.amorea-img-stack__btn:focus-visible {
+  outline: 2px solid var(--theme-primary, #4a6da7);
+  outline-offset: 2px;
+}
+
+/* Fullscreen lightbox (carousel photo) */
+.amorea-img-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+
+.amorea-img-lightbox__shell {
+  position: relative;
+  display: flex;
+  min-height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
+    max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+  background: rgba(0, 0, 0, 0.85);
+  box-sizing: border-box;
+}
+
+.amorea-img-lightbox__close {
+  position: absolute;
+  top: max(12px, env(safe-area-inset-top));
+  right: max(12px, env(safe-area-inset-right));
+  z-index: 2;
+  display: flex;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(30, 30, 46, 0.95);
+  color: #fff;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.amorea-img-lightbox__close:hover {
+  background: rgba(42, 42, 61, 0.98);
+}
+
+.amorea-img-lightbox__close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.amorea-img-lightbox__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: flex;
+  width: 52px;
+  height: 52px;
+  align-items: center;
+  justify-content: center;
+  margin-top: -26px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(30, 30, 46, 0.95);
+  color: #fff;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.amorea-img-lightbox__nav:hover {
+  background: rgba(42, 42, 61, 0.98);
+}
+
+.amorea-img-lightbox__nav:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.amorea-img-lightbox__nav--prev {
+  left: max(12px, env(safe-area-inset-left));
+}
+
+.amorea-img-lightbox__nav--next {
+  right: max(12px, env(safe-area-inset-right));
+}
+
+.amorea-img-lightbox__panel {
+  position: relative;
+  z-index: 1;
+  max-width: min(96vw, 1200px);
+  max-height: min(85vh, 900px);
+}
+
+.amorea-img-lightbox__img {
+  display: block;
+  max-width: 100%;
+  max-height: min(85vh, 900px);
+  width: auto;
+  height: auto;
+  margin-inline: auto;
+  object-fit: contain;
+  border-radius: 0.35rem;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 639px) {
+  .amorea-img-lightbox__nav {
+    width: 44px;
+    height: 44px;
+    margin-top: -22px;
+    font-size: 1.5rem;
+  }
+}
+
+.amorea-poem--exact {
+  padding: 24px 20px 28px;
+  text-align: center;
+}
+
+.amorea-poem-title {
+  margin: 0 0 8px;
+  color: #1a1a2e;
+  line-height: 1.15;
+}
+
+.amorea-poem-subtitle {
+  margin: 0 0 14px;
+  color: #4a4a6a;
+  line-height: 1.4;
+}
+
+.amorea-poem-body {
+  margin: 0;
+  color: #4a4a6a;
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.amorea-env-section {
+  margin: 28px 0 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.amorea-env-outer {
+  width: 380px;
+  height: 290px;
+  position: relative;
+  cursor: pointer;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.amorea-env-body {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, #4a6da7, #3d5e96, #4a6da7);
+  border-radius: 4px;
+  box-shadow: 0 12px 40px rgba(74, 109, 167, 0.35), 0 4px 12px rgba(74, 109, 167, 0.2);
+  overflow: hidden;
+}
+
+.amorea-env-body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, transparent 60%);
+}
+
+.amorea-env-tri-left,
+.amorea-env-tri-right {
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  height: 58%;
+}
+
+.amorea-env-tri-left {
+  left: 0;
+  background: linear-gradient(135deg, #3a5585, #3a5585);
+  clip-path: polygon(0 100%, 100% 100%, 0 0);
+}
+
+.amorea-env-tri-right {
+  right: 0;
+  background: linear-gradient(225deg, #3a5585, #3a5585);
+  clip-path: polygon(100% 100%, 0 100%, 100% 0);
+}
+
+.amorea-env-inside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  background: #e8eef8;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 60%, 0 100%);
+  overflow: hidden;
+}
+
+.amorea-env-inside-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, #4a6da7 1px, transparent 1px),
+    radial-gradient(circle, #4a6da7 0.5px, transparent 0.5px);
+  background-size: 16px 16px, 8px 8px;
+  background-position: 0 0, 8px 8px;
+  opacity: 0.15;
+}
+
+.amorea-env-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  background: linear-gradient(160deg, #5578b5, #4a6da7);
+  clip-path: polygon(0 0, 100% 0, 50% 85%);
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  z-index: 10;
+}
+
+.amorea-env-flap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent);
+  clip-path: polygon(0 0, 100% 0, 50% 85%);
+}
+
+.amorea-env-flap.open {
+  transform: rotateX(-175deg);
+}
+
+.amorea-env-wax-seal {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 52px;
+  height: 52px;
+  background: radial-gradient(circle at 38% 35%, #d4c5a0, #b8a87a, #9a8a5a);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25), inset 0 -2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 20;
+  border: 1.5px solid rgba(180, 160, 100, 0.6);
+  animation: amoreaSealPulse 2.4s ease-in-out infinite;
+}
+
+.amorea-env-wax-seal-symbol {
+  font-family: var(--font-family-script);
+  font-size: 14px;
+  color: rgba(80, 60, 20, 0.7);
+}
+
+.amorea-env-click-hint {
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 7px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  z-index: 15;
+}
+
+.amorea-letter-peek {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  width: 86%;
+  transform: translateX(-50%);
+  background: var(--layout-card-bg, #ffffff);
+  border-radius: 2px;
+  padding: 10px 14px 8px;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.12);
+  z-index: 4;
+  animation: amoreaPeekLetterStrip 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+  text-align: center;
+  border-top: 3px solid #4a6da7;
+}
+
+.amorea-env-outer.opened .amorea-letter-peek {
+  display: none;
+}
+
+.amorea-letter-peek-names {
+  font-family: var(--font-family-script);
+  font-size: 20px;
+  color: #1a1a2e;
+  line-height: 1;
+}
+
+.amorea-letter-peek-line {
+  width: 32px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #4a6da7, transparent);
+  margin: 4px auto;
+}
+
+.amorea-letter-peek-sub {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 7px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #8a8a9a;
+}
+
+.section-shell--amorea {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.section-shell--amorea.invitation-amorea-section {
+  background: var(--layout-card-bg, #ffffff) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.amorea-shimmer {
+  height: 2px;
+  margin: 0;
+  background: linear-gradient(90deg, transparent, #4a6da7, #d4c590, #4a6da7, transparent);
+  opacity: 0.4;
+  position: relative;
+  overflow: hidden;
+}
+
+.amorea-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  animation: amoreaShimmerSlide 2s infinite;
+}
+
+@keyframes amoreaShimmerSlide {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.amorea-closing {
+  padding: 32px 24px;
+  background: linear-gradient(160deg, #4a6da7, #2a3f5e);
+  text-align: center;
+}
+
+.amorea-closing-text {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+
+.amorea-closing-names {
+  font-family: var(--font-family-script);
+  font-size: 36px;
+  color: #fff;
+}
+
+.amorea-closing-deadline {
+  margin-top: 14px;
+  max-width: 28rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.amorea-closing-deadline time {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.amorea-closing-bottom {
+  margin-top: 16px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.amorea-music-section {
+  padding: 20px 24px;
+  background: var(--layout-page-bg, #f8f6f2);
+  text-align: center;
+}
+
+.amorea-countdown-floral-top,
+.amorea-countdown-floral-bot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 60px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.amorea-countdown-floral-top {
+  top: -10px;
+}
+
+.amorea-countdown-floral-bot {
+  bottom: -10px;
+}
+
+.amorea-countdown--exact {
+  --amorea-countdown-green: #169454;
+  --amorea-countdown-blue: #4a6da7;
+  position: relative;
+  overflow: hidden;
+  padding: 32px 24px;
+  background: var(--layout-card-bg, #ffffff);
+  text-align: center;
+}
+
+.amorea-hero-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.amorea-hero-couple {
+  margin: 0 0 4px;
+  text-align: center;
+  font-family: var(--font-family-script);
+  font-size: calc(62px * var(--layout-script-scale, 1) * var(--layout-card-title-size-scale, 1));
+  font-weight: var(--layout-card-title-font-weight, 400);
+  line-height: 1.05;
+  letter-spacing: 1px;
+  color: #1a1a2e;
+}
+
+.amorea-hero-amp {
+  display: block;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(30px * var(--layout-body-scale, 1) * var(--layout-card-subtitle-size-scale, 1));
+  font-weight: var(--layout-card-subtitle-font-weight, 300);
+  letter-spacing: 4px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #8a8a9a;
+  margin: 4px 0;
+}
+
+.amorea-envelope-button {
+  width: min(280px, 100%);
+  border: 0;
+  border-radius: 4px;
+  background: linear-gradient(160deg, #4a6da7, #3d5e96, #4a6da7);
+  padding: 18px 14px 14px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 12px 40px rgba(74, 109, 167, 0.35), 0 4px 12px rgba(74, 109, 167, 0.2);
+}
+
+.amorea-envelope-button--large {
+  width: min(280px, 100%);
+  min-height: 190px;
+  box-shadow: 0 12px 40px rgba(74, 109, 167, 0.35), 0 4px 12px rgba(74, 109, 167, 0.2);
+}
+
+.amorea-envelope-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.34) 1px, transparent 1px);
+  background-size: 11px 11px;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.amorea-envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  background: linear-gradient(160deg, #5578b5, #4a6da7);
+  clip-path: polygon(0 0, 100% 0, 50% 85%);
+}
+
+.amorea-envelope-flap.is-open {
+  transform: perspective(1000px) rotateX(-175deg);
+  transform-origin: top center;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.amorea-envelope-letter {
+  position: relative;
+  display: block;
+  margin-top: 60px;
+  border-radius: 2px;
+  border-top: 3px solid #4a6da7;
+  background: var(--layout-card-bg, #ffffff);
+  padding: 10px 14px 8px;
+  text-align: center;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.12);
+  animation: amoreaLetterPeekBounce 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+.amorea-seal-wrap {
+  margin-top: -22px;
+  position: relative;
+  z-index: 3;
+}
+
+.amorea-seal-wrap .amorea-gifts-seal {
+  width: 52px !important;
+  height: 52px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25), inset 0 -2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.amorea-wax-seal-symbol {
+  font-family: var(--font-family-script);
+  font-size: calc(14px * var(--layout-script-scale, 1));
+  color: rgba(80, 60, 20, 0.7);
+}
+
+/* Matches reference `.guest-name` + `.seats-reserved` stack under the envelope */
+.guest-name,
+.amorea-hero-guest {
+  margin-top: 24px;
+  font-family: var(--font-family-script);
+  font-size: calc(36px * var(--layout-script-scale, 1) * var(--layout-card-title-size-scale, 1));
+  font-weight: var(--layout-card-title-font-weight, 400);
+  line-height: 1;
+  color: #1a1a2e;
+}
+
+.amorea-hero-seats {
+  font-weight: var(--layout-card-body-font-weight, 400);
+  margin-top: 24px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(9px * var(--layout-body-scale, 1) * var(--layout-card-body-size-scale, 1));
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #8a8a9a;
+}
+
+.amorea-slide-title {
+  margin-top: 16px;
+  font-family: var(--font-family-script);
+  font-size: calc(28px * var(--layout-script-scale, 1) * var(--layout-card-title-size-scale, 1));
+  font-weight: var(--layout-card-title-font-weight, 400);
+  line-height: 1.1;
+  text-align: center;
+  color: #1a1a2e;
+}
+
+.amorea-slide-subtitle {
+  font-weight: var(--layout-card-subtitle-font-weight, 400);
+  margin-top: 8px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: calc(14px * var(--layout-body-scale, 1) * var(--layout-card-subtitle-size-scale, 1));
+  font-style: italic;
+  line-height: 1.8;
+  text-align: center;
+  color: #4a4a6a;
+}
+
+.amorea-envelope-letter-title {
+  font-weight: var(--layout-card-title-font-weight, 400);
+  display: block;
+  font-family: var(--font-family-script);
+  font-size: calc(20px * var(--layout-script-scale, 1) * var(--layout-card-title-size-scale, 1));
+  line-height: 1;
+  color: #1a1a2e;
+}
+
+.amorea-envelope-letter-sub {
+  font-weight: var(--layout-card-body-font-weight, 400);
+  display: block;
+  margin-top: 4px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(7px * var(--layout-body-scale, 1) * var(--layout-card-body-size-scale, 1));
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #8a8a9a;
+}
+
+.amorea-letter-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26, 26, 46, 0.5);
+  backdrop-filter: blur(4px);
+  padding: 20px;
+  animation: amoreaFadeIn 220ms ease-out;
+}
+
+.amorea-letter-card {
+  width: min(380px, 92vw);
+  border-radius: 2px;
+  border: 0;
+  background: var(--layout-card-bg, #ffffff);
+  padding: 0;
+  position: relative;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  animation: amoreaLetterPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.amorea-letter-flap {
+  height: 70px;
+  background: linear-gradient(160deg, #5578b5, #4a6da7);
+  position: relative;
+  overflow: hidden;
+}
+
+.amorea-letter-flap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='10' cy='10' r='3' fill='none' stroke='rgba(255,255,255,.2)' stroke-width='.8'/%3E%3Cpath d='M20 5 Q30 15 20 25 Q10 35 20 45' fill='none' stroke='rgba(255,255,255,.15)' stroke-width='.8'/%3E%3Cellipse cx='45' cy='30' rx='8' ry='12' fill='none' stroke='rgba(255,255,255,.18)' stroke-width='.8'/%3E%3C/svg%3E");
+  opacity: 0.8;
+}
+
+.amorea-letter-toile {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 20px 28px at 15% 50%, rgba(255, 255, 255, 0.12), transparent),
+    radial-gradient(ellipse 15px 20px at 40% 30%, rgba(255, 255, 255, 0.1), transparent),
+    radial-gradient(ellipse 18px 24px at 70% 60%, rgba(255, 255, 255, 0.1), transparent),
+    radial-gradient(ellipse 12px 16px at 85% 30%, rgba(255, 255, 255, 0.08), transparent);
+}
+
+.amorea-letter-body {
+  padding: 32px 28px 28px;
+  position: relative;
+}
+
+.amorea-letter-flowers {
+  position: absolute;
+  top: -16px;
+  left: 16px;
+  font-size: 32px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  z-index: 2;
+}
+
+.amorea-letter-frame {
+  border: 1px solid #c8d4e8;
+  border-radius: 4px;
+  padding: 24px 20px;
+  position: relative;
+  background: var(--layout-subcard-bg, #fefefe);
+}
+
+.amorea-letter-frame::before,
+.amorea-letter-frame::after {
+  content: "✦";
+  position: absolute;
+  color: #4a6da7;
+  opacity: 0.4;
+  font-size: 10px;
+}
+
+.amorea-letter-frame::before {
+  top: 6px;
+  left: 8px;
+}
+
+.amorea-letter-frame::after {
+  bottom: 6px;
+  right: 8px;
+}
+
+.amorea-letter-divider {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #4a6da7, transparent);
+  margin: 12px auto;
+}
+
+.amorea-letter-frame .amorea-letter-pretitle {
+  margin-bottom: 12px;
+}
+
+.amorea-letter-frame .amorea-letter-message {
+  margin-top: 0;
+}
+
+.amorea-letter-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: calc(22px * var(--layout-body-scale, 1) * var(--layout-page-body-size-scale, 1));
+  font-family: sans-serif;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.amorea-letter-close:hover {
+  background: rgba(255, 255, 255, 0.32);
+  color: #fff;
+}
+
+.amorea-letter-close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.amorea-letter-pretitle {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(8px * var(--layout-body-scale, 1) * var(--layout-page-body-size-scale, 1));
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #8a9ab5;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.amorea-letter-date,
+.amorea-letter-venue,
+.amorea-song-artist,
+.amorea-dresscode-text,
+.amorea-gifts-message {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.amorea-song-kicker {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(8px * var(--layout-body-scale, 1) * var(--layout-card-body-size-scale, 1));
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #8a8a9a;
+}
+
+.amorea-letter-couple {
+  margin-top: 8px;
+  font-family: var(--font-family-script);
+  font-size: calc(38px * var(--layout-script-scale, 1) * var(--layout-card-title-size-scale, 1));
+  font-weight: var(--layout-card-title-font-weight, 400);
+  color: #1a1a2e;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.amorea-letter-couple em {
+  font-style: normal;
+  color: #4a6da7;
+}
+
+.amorea-letter-message {
+  margin-top: 10px;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: calc(14px * var(--layout-body-scale, 1) * var(--layout-card-body-size-scale, 1));
+  font-style: italic;
+  font-weight: var(--layout-card-body-font-weight, 400);
+  color: #4a4a6a;
+  line-height: 1.8;
+}
+
+.amorea-content-overlay-title {
+  margin: 0 0 8px;
+  font-family: var(--font-family-script);
+  font-size: calc(32px * var(--layout-script-scale, 1));
+  font-weight: var(--layout-subcard-title-font-weight, 400);
+  line-height: 1.12;
+  text-align: center;
+  color: #1a1a2e;
+}
+
+.amorea-content-overlay-subtitle {
+  margin: 0 0 12px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(9px * var(--layout-body-scale, 1) * var(--layout-card-body-size-scale, 1));
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #8a9ab5;
+}
+
+.amorea-content-overlay-body {
+  margin-top: 4px;
+  white-space: pre-line;
+  text-align: left;
+  font-style: normal;
+  font-size: calc(16px * var(--layout-body-scale, 1) * var(--layout-card-body-size-scale, 1));
+  font-weight: var(--layout-card-body-font-weight, 400);
+  color: #4a4a6a;
+  line-height: 1.8;
+}
+
+.amorea-letter-date {
+  margin-top: 16px;
+  text-align: center;
+  font-size: calc(9px * var(--layout-body-scale, 1) * var(--layout-page-body-size-scale, 1));
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #4a6da7;
+}
+
+.amorea-letter-venue {
+  margin-top: 4px;
+  text-align: center;
+  font-size: calc(8.5px * var(--layout-body-scale, 1) * var(--layout-page-body-size-scale, 1));
+  letter-spacing: 1px;
+  text-transform: none;
+  color: #8a8a9a;
+}
+
+.amorea-song-play {
+  border: 0;
+  color: #fff;
+  background: linear-gradient(135deg, #4a6da7, #3a5585);
+}
+
+.amorea-song-nav {
+  border: 0;
+  background: transparent;
+  color: #7e87a1;
+  font-size: calc(14px * var(--layout-body-scale, 1) * var(--layout-card-body-size-scale, 1));
+  cursor: pointer;
+}
+
+.amorea-song-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: calc(16px * var(--layout-title-scale, 1) * var(--layout-card-title-size-scale, 1));
+  font-style: italic;
+  font-weight: var(--layout-card-title-font-weight, 400);
+  color: #1a1a2e;
+}
+
+.amorea-song-artist {
+  font-size: calc(9px * var(--layout-body-scale, 1) * var(--layout-card-body-size-scale, 1));
+  letter-spacing: 1px;
+  color: #8a8a9a;
+}
+
+.amorea-music-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.amorea-song-player {
+  background: var(--layout-subcard-bg, #ffffff);
+  border-radius: 4px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #dce4f0;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.amorea-song-track {
+  flex: 1;
+  text-align: left;
+}
+
+.amorea-song-play {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(74, 109, 167, 0.3);
+}
+
+.amorea-song-play svg {
+  margin-left: 2px;
+}
+
+.amorea-music-bar {
+  height: 10px;
+  background: #dce4f0;
+  border-radius: 2px;
+  margin-top: 8px;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  touch-action: none;
+  outline: none;
+}
+
+.amorea-music-bar:focus-visible {
+  box-shadow: 0 0 0 2px var(--theme-primary, #4a6da7);
+}
+
+.amorea-music-progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #4a6da7, #6a8dc7);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.amorea-dresscode-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 56px;
+  background: linear-gradient(135deg, #1a2e4a, #2a3f5e);
+  border-radius: 6px;
+  position: relative;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 16px rgba(26, 46, 74, 0.3);
+}
+
+.amorea-dresscode-badge::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.amorea-dresscode-text-d {
+  font-family: var(--font-family-script);
+  font-size: 32px;
+  color: #d4c590;
+  line-height: 0.9;
+  margin-right: 2px;
+}
+
+.amorea-dresscode-text-rest {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.amorea-dresscode-desc {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #6a6a8a;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.amorea-gifts-seal {
+  background: radial-gradient(circle at 38% 35%, #d4c5a0, #b8a87a, #9a8a5a);
+  color: rgba(80, 60, 20, 0.7);
+  animation: amoreaSealPulse 2.4s ease-in-out infinite;
+}
+
+.amorea-gifts-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin-top: 20px;
+  border: 0;
+  background: linear-gradient(135deg, #2a3f5e, #1a2e4a);
+  border-radius: 50%;
+  aspect-ratio: 1;
+  max-width: 100%;
+  padding: 10px 12px 12px;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.amorea-gifts-badge:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 10px 28px rgba(26, 46, 74, 0.35);
+}
+
+.amorea-gifts-badge:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.95);
+  outline-offset: 4px;
+}
+
+.amorea-gifts-badge:active {
+  transform: scale(0.98);
+}
+
+.amorea-gifts-badge--exact {
+  width: min(11rem, 86vw);
+}
+
+.amorea-gifts-badge--compact {
+  width: min(10rem, 86vw);
+}
+
+.amorea-gifts-modal-hint {
+  margin-top: 4px;
+  flex-shrink: 0;
+  max-width: 100%;
+  padding: 5px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.97);
+  color: #3a5585;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(7px * var(--layout-body-scale, 1) * var(--layout-subcard-body-size-scale, 1));
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.amorea-gifts-badge:hover .amorea-gifts-modal-hint {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* One line: script first letter + rest in caps (e.g. Regalos) */
+.amorea-gifts-badge-title {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin: 0;
+  max-width: 100%;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.amorea-gifts-badge-first {
+  flex-shrink: 0;
+  font-family: var(--font-family-script);
+  font-size: calc(44px * var(--layout-script-scale, 1));
+  font-weight: var(--layout-subcard-title-font-weight, 400);
+  color: #d4c590;
+}
+
+.amorea-gifts-badge-rest {
+  flex-shrink: 1;
+  min-width: 0;
+  font-family: "Josefin Sans", sans-serif;
+  letter-spacing: 0.2em;
+  font-size: calc(10px * var(--layout-body-scale, 1) * var(--layout-subcard-body-size-scale, 1));
+  font-weight: var(--layout-subcard-body-font-weight, 400);
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.amorea-hero-carousel p,
+.amorea-countdown p,
+.amorea-schedule p,
+.amorea-rsvp p {
+  color: #4a4a6a;
+}
+
+.amorea-hero-carousel:not(.amorea-cover-section)::after,
+.amorea-countdown::after,
+.amorea-schedule::after,
+.amorea-gifts::after,
+.amorea-dresscode::after,
+.amorea-song-card::after {
+  content: "";
+  display: block;
+  height: 2px;
+  margin-top: 18px;
+  background: linear-gradient(90deg, transparent, rgba(74, 109, 167, 0.4), rgba(212, 197, 144, 0.45), rgba(74, 109, 167, 0.4), transparent);
+  opacity: 0.45;
+}
+
+.section-shell--amorea .amorea-countdown::after,
+.section-shell--amorea .amorea-schedule::after,
+.section-shell--amorea .amorea-gifts::after,
+.section-shell--amorea .amorea-dresscode::after {
+  display: none !important;
+}
+
+.amorea-schedule--exact {
+  padding: 32px 24px;
+  background: var(--layout-card-bg, #ffffff);
+}
+
+.amorea-gifts--exact {
+  padding: 24px;
+}
+
+.amorea-dresscode--exact {
+  padding: 24px;
+  background: var(--layout-card-bg, #ffffff);
+}
+
+.amorea-rsvp--exact {
+  position: relative;
+  overflow: hidden;
+  padding: 32px 24px 48px;
+  background: var(--layout-card-bg, #ffffff);
+}
+
+.amorea-rsvp button {
+  border-radius: 3px !important;
+  font-family: "Josefin Sans", sans-serif !important;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.amorea-rsvp input {
+  border-color: #dce4f0 !important;
+  background: #fafcff !important;
+}
+
+/* Countdown: script = Great Vibes (primary) / Brittany (fallback), 35px base; numbers = green */
+.amorea-countdown--exact .amorea-countdown-script {
+  font-family: var(--font-family-script);
+  font-size: calc(35px * var(--layout-script-scale, 1) * var(--layout-subcard-title-size-scale, 1));
+  line-height: 1;
+  color: #1a1a2e;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.amorea-countdown-numbers {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  margin: 4px 0 12px;
+  color: var(--amorea-countdown-blue);
+}
+
+.amorea-countdown-cell {
+  min-width: 80px;
+  text-align: center;
+}
+
+.amorea-countdown-number {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: calc(72px * var(--layout-title-scale, 1) * var(--layout-subcard-title-size-scale, 1));
+  font-weight: 300;
+  color: var(--amorea-countdown-blue);
+  line-height: 1;
+}
+
+.amorea-countdown-separator {
+  padding-bottom: 8px;
+  font-size: calc(48px * var(--layout-body-scale, 1) * var(--layout-subcard-body-size-scale, 1));
+  color: var(--amorea-countdown-blue);
+  line-height: 1;
+}
+
+.amorea-countdown-label {
+  display: block;
+  width: 100%;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(8px * var(--layout-body-scale, 1) * var(--layout-subcard-body-size-scale, 1));
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--amorea-countdown-blue);
+  text-align: center;
+}
+
+.amorea-countdown-footer {
+  margin-top: 4px;
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(9px * var(--layout-body-scale, 1) * var(--layout-subcard-body-size-scale, 1));
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #4a4a6a;
+}
+
+.amorea-countdown-wedding-date {
+  margin-top: 10px;
+  text-align: center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: calc(20px * var(--layout-body-scale, 1) * var(--layout-subcard-body-size-scale, 1));
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #1a1a2e;
+}
+
+.amorea-countdown-wedding-date time {
+  text-decoration: none;
+}
+
+.amorea-polaroids {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.amorea-polaroid {
+  flex: 1 1 120px;
+  min-width: 72px;
+  max-width: 180px;
+  background: var(--layout-subcard-bg, #ffffff);
+  padding: 8px 8px 22px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.08);
+  transform: rotate(-2deg);
+}
+
+a.amorea-polaroid {
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+a.amorea-polaroid:focus-visible {
+  outline: 2px solid #4a6da7;
+  outline-offset: 3px;
+}
+
+.amorea-polaroid--offset {
+  margin-top: 8px;
+  transform: rotate(1.5deg);
+}
+
+.amorea-polaroid-image {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #c8d4e8, #a0b4d0, #8096bc);
+  font-size: calc(28px * var(--layout-body-scale, 1) * var(--layout-subcard-body-size-scale, 1));
+}
+
+.amorea-polaroid-label {
+  margin-top: 6px;
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(8px * var(--layout-body-scale, 1) * var(--layout-subcard-body-size-scale, 1));
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #8a8a9a;
+}
+
+.amorea-schedule-card {
+  margin-bottom: 14px;
+  border: 1px solid var(--layout-subcard-border-color, #dce4f0);
+  border-radius: var(--layout-subcard-radius, 8px);
+  background: var(--layout-subcard-bg, #ffffff);
+  padding: 20px;
+  text-align: center;
+}
+
+.amorea-schedule-card[id] {
+  scroll-margin-top: max(5rem, env(safe-area-inset-top, 0px));
+}
+
+.amorea-schedule-card-title {
+  font-family: var(--font-family-script);
+  font-size: calc(28px * var(--layout-script-scale, 1));
+  font-weight: var(--layout-subcard-title-font-weight, 400);
+  line-height: 1;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+}
+
+.amorea-schedule-card-venue {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(10px * var(--layout-body-scale, 1) * var(--layout-subcard-body-size-scale, 1));
+  font-weight: var(--layout-subcard-body-font-weight, 400);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #4a4a6a;
+  margin-bottom: 2px;
+}
+
+.amorea-schedule-card-time {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(9px * var(--layout-body-scale, 1) * var(--layout-subcard-body-size-scale, 1));
+  font-weight: var(--layout-subcard-body-font-weight, 400);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #4a4a6a;
+  margin-top: 4px;
+}
+
+.amorea-schedule-location-btn {
+  display: inline-block;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #4a6da7;
+  border-radius: 20px;
+  background: var(--layout-subcard-bg, #ffffff);
+  color: #4a6da7;
+  padding: 5px 16px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(8px * var(--layout-body-scale, 1) * var(--layout-subcard-body-size-scale, 1));
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+a.amorea-schedule-location-btn:focus-visible {
+  outline: 2px solid #4a6da7;
+  outline-offset: 2px;
+}
+
+.amorea-rsvp-frame {
+  border: 1px solid var(--layout-subcard-border-color, #dce4f0);
+  border-radius: var(--layout-subcard-radius, 4px);
+  padding: 24px;
+  background: var(--layout-subcard-bg, #ffffff);
+}
+
+.amorea-rsvp-title {
+  text-align: center;
+  font-family: var(--font-family-script);
+  font-size: calc(28px * var(--layout-script-scale, 1) * var(--layout-subcard-title-size-scale, 1));
+  font-weight: var(--layout-subcard-title-font-weight, 400);
+  line-height: 1;
+  color: #1a1a2e;
+  margin-bottom: 20px;
+}
+
+.amorea-rsvp-deadline-note {
+  text-align: center;
+  margin: -8px 0 18px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(10px * var(--layout-body-scale, 1) * var(--layout-subcard-body-size-scale, 1));
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.45;
+  color: #5c5c6e;
+}
+
+.amorea-rsvp-deadline-note time {
+  font-weight: 600;
+  color: #2a3f5e;
+}
+
+.amorea-rsvp-field {
+  margin-bottom: 12px;
+}
+
+.amorea-rsvp-fieldset {
+  border: 0;
+  margin: 0 0 12px;
+  padding: 0;
+  min-width: 0;
+}
+
+.amorea-rsvp-radios {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.amorea-rsvp-radio-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: calc(16px * var(--layout-body-scale, 1) * var(--layout-subcard-body-size-scale, 1));
+  font-weight: var(--layout-subcard-body-font-weight, 400);
+  color: #1a1a2e;
+  cursor: pointer;
+}
+
+.amorea-rsvp-radio-row input[type="radio"] {
+  width: auto;
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: #4a6da7;
+}
+
+.amorea-rsvp-label,
+.amorea-rsvp-question {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(8px * var(--layout-body-scale, 1) * var(--layout-subcard-body-size-scale, 1));
+  font-weight: var(--layout-subcard-body-font-weight, 400);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8a8a9a;
+}
+
+.amorea-rsvp-question {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.amorea-rsvp-note {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(8px * var(--layout-body-scale, 1) * var(--layout-subcard-body-size-scale, 1));
+  font-weight: var(--layout-subcard-body-font-weight, 400);
+  margin-top: 12px;
+  text-align: center;
+  line-height: 1.6;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #b0b0c0;
+}
+
+.amorea-rsvp-input {
+  margin-top: 5px;
+  width: 100%;
+  border: 1px solid #dce4f0;
+  border-radius: 3px;
+  background: #fafcff;
+  padding: 9px 12px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: calc(16px * var(--layout-body-scale, 1) * var(--layout-subcard-body-size-scale, 1));
+  font-weight: var(--layout-subcard-body-font-weight, 400);
+  color: #1a1a2e;
+}
+
+.amorea-rsvp-yes,
+.amorea-rsvp-no {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 3px;
+  padding: 12px;
+  border: 0;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(9px * var(--layout-body-scale, 1) * var(--layout-card-body-size-scale, 1));
+  font-weight: var(--layout-card-body-font-weight, 400);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.amorea-rsvp-yes {
+  background: linear-gradient(135deg, #4a6da7, #3a5585);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(74, 109, 167, 0.3);
+}
+
+.amorea-rsvp-no {
+  background: #f0f4fa;
+  color: #4a6da7;
+  border: 1px solid #dce4f0;
+}
+
+.amorea-gifts-kicker {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto 10px;
+}
+
+.amorea-gifts-kicker-icon {
+  display: inline-block;
+  font-size: calc(36px * var(--layout-body-scale, 1) * var(--layout-card-body-size-scale, 1));
+  line-height: 1;
+}
+
+@keyframes amoreaFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes amoreaLetterPop {
+  from {
+    transform: scale(0.7) translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes amoreaPeekLetterStrip {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+  20% {
+    transform: translateX(-50%) translateY(-18px);
+  }
+  35% {
+    transform: translateX(-50%) translateY(-14px);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-20px);
+  }
+  65% {
+    transform: translateX(-50%) translateY(-14px);
+  }
+  80% {
+    transform: translateX(-50%) translateY(-18px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes amoreaLetterPeekBounce {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-18px);
+  }
+  35% {
+    transform: translateY(-14px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  65% {
+    transform: translateY(-14px);
+  }
+  80% {
+    transform: translateY(-18px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes amoreaSealPulse {
+  0%,
+  100% {
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25), inset 0 -2px 6px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(212, 197, 160, 0.5);
+  }
+  50% {
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25), inset 0 -2px 6px rgba(0, 0, 0, 0.15), 0 0 0 10px rgba(212, 197, 160, 0);
+  }
+}
+
+.motion-reveal {
+  opacity: 1;
+  transform: none;
+  transition: opacity 520ms ease, transform 520ms ease;
+}
+
+.motion-reveal--fade {
+  opacity: 0;
+}
+
+.motion-reveal--slide-up {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.motion-reveal--zoom-in {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+.motion-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.motion-cards-hover .section-shell,
+.motion-cards-hover .home-hero-summary,
+.motion-cards-hover .amorea-hero-carousel {
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.motion-cards-hover .section-shell:hover,
+.motion-cards-hover .home-hero-summary:hover,
+.motion-cards-hover .amorea-hero-carousel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(28, 52, 95, 0.14);
+}
+
+.motion-buttons-pulse .amorea-song-play,
+.motion-buttons-pulse .amorea-rsvp button,
+.motion-buttons-pulse .amorea-envelope-button {
+  animation: motionPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes motionPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-reveal,
+  .motion-cards-hover .section-shell,
+  .motion-cards-hover .home-hero-summary,
+  .motion-cards-hover .amorea-hero-carousel,
+  .motion-buttons-pulse .amorea-song-play,
+  .motion-buttons-pulse .amorea-rsvp button,
+  .motion-buttons-pulse .amorea-envelope-button {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .amorea-img-stack__card {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,21 @@
+wedding:
+  couple:
+    bride: "Alexandra"
+    groom: "Matei"
+  event:
+    date: "2026-09-12"
+    venue: "The Garden Estate, Bucharest"
+    dress_code: "Formal pastel"
+    ceremony_time: "16:00"
+    dinner_time: "19:00"
+faq:
+  - q: "What is the exact date?"
+    a: "The wedding is on 12 September 2026."
+  - q: "Where is the venue?"
+    a: "The venue is The Garden Estate, Bucharest."
+  - q: "What is the dress code?"
+    a: "Formal pastel."
+  - q: "When does ceremony start?"
+    a: "Ceremony starts at 16:00."
+fallback:
+  answer: "I can only answer based on the wedding YAML file. Please ask about date, venue, dress code, schedule, or RSVP."

@@ -1,0 +1,443 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Great Vibes";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/great-vibes/GreatVibes-Regular.ttf") format("truetype");
+}
+
+/* Brittany: fallback script (CDN); add self-hosted files under /fonts/brittany/ if you prefer. */
+@import url("https://fonts.cdnfonts.com/css/brittany");
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Josefin+Sans:wght@100;300;400&display=swap");
+@import "./amorea.css";
+
+:root {
+  --font-family-script: "Great Vibes", "Brittany", cursive;
+}
+
+body {
+  margin: 0;
+  background: #f8f6f2;
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  color: #1a1a2e;
+}
+
+/* In-page anchors (#hash): smooth scroll unless user prefers reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+#site-theme-root {
+  /* Page background is applied on `body` only — avoids double-fill flicker with layout CSS vars */
+  background-color: transparent;
+  font-weight: var(--layout-page-font-weight, 400);
+  font-size: calc(1rem * var(--layout-body-scale, 1) * var(--layout-page-body-size-scale, 1));
+}
+
+/* Full-width top bar: couple names + optional image (wedding details) or Amorea-style gradient */
+.site-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: clamp(7.5rem, 26vw, 13rem);
+  padding: clamp(1.25rem, 4vw, 2rem) clamp(1rem, 4vw, 2.5rem);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.site-header--sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-header--fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+/* Reserves the same block height so content is not hidden under a fixed header */
+.site-header-spacer {
+  min-height: clamp(7.5rem, 26vw, 13rem);
+  padding: 0;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* Parallax: layered inside header only (no viewport-fixed bg — avoids wrong crop + bleeding onto hero/cover) */
+.site-header__parallax-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.site-header__parallax-bg--dynamic {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -22%;
+  height: 144%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  will-change: transform;
+}
+
+.site-header__img-slot {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.site-header__img-slot--ken {
+  overflow: hidden;
+}
+
+.site-header__img-slot .site-header__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.site-header__img-slot--ken .site-header__photo {
+  animation: site-header-ken 24s ease-in-out infinite alternate;
+}
+
+@keyframes site-header-ken {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.12);
+  }
+}
+
+.site-header__aurora {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(130deg, #3d5a8f, #4a6da7, #5a7ab8, #2a3f5e, #4a6da7);
+  background-size: 400% 400%;
+  animation: site-header-aurora 16s ease infinite;
+}
+
+@keyframes site-header-aurora {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.site-header__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(160deg, rgba(74, 109, 167, 0.62), rgba(42, 63, 94, 0.88));
+}
+
+.site-header__overlay--frosted {
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.22),
+    rgba(74, 109, 167, 0.45),
+    rgba(42, 63, 94, 0.82)
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.site-header--aurora:not(.site-header--has-image) .site-header__overlay {
+  background: linear-gradient(160deg, rgba(42, 63, 94, 0.35), rgba(26, 26, 46, 0.45));
+}
+
+.site-header--kenBurns:not(.site-header--has-image) .site-header__names {
+  animation: site-header-name-glow 5s ease-in-out infinite alternate;
+}
+
+@keyframes site-header-name-glow {
+  0% {
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
+    filter: brightness(1);
+  }
+  100% {
+    text-shadow: 0 4px 26px rgba(255, 255, 255, 0.22);
+    filter: brightness(1.06);
+  }
+}
+
+.site-header__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: min(100%, 42rem);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.site-header__names {
+  margin: 0;
+  font-family: var(--font-family-script);
+  font-size: clamp(2rem, 7.5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
+}
+
+@media (min-width: 480px) {
+  .site-header__name {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-header__names {
+    font-size: clamp(1.65rem, 8.5vw, 2.75rem);
+  }
+
+  .site-header__amp {
+    display: block;
+    font-size: 0.62em;
+    line-height: 1.25;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+.invitation-default-page {
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto;
+  overflow: hidden;
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  background: #fff;
+  color: #1a1a2e;
+}
+
+.invitation-default-page::before,
+.invitation-default-page::after {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.15;
+  background-image: radial-gradient(circle at 60% 35%, rgba(74, 109, 167, 0.6), transparent 52%),
+    radial-gradient(circle at 35% 65%, rgba(74, 109, 167, 0.5), transparent 50%);
+}
+
+.invitation-default-page::before {
+  top: -24px;
+  left: -24px;
+}
+
+.invitation-default-page::after {
+  top: -24px;
+  right: -24px;
+  transform: rotate(90deg);
+}
+
+.invitation-default-hero,
+.invitation-default-section,
+.invitation-default-carousel {
+  position: relative;
+  border: var(--layout-card-border-width, 1px) solid var(--layout-card-border-color, #d7e2f6);
+  box-shadow: var(--layout-card-shadow, 0 8px 28px rgba(33, 52, 94, 0.08)), inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+  background: var(--layout-card-bg, #fff);
+}
+
+.invitation-default-hero {
+  overflow: hidden;
+  border-radius: var(--layout-card-radius, 10px);
+  padding-top: 24px;
+}
+
+.invitation-default-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 14%, rgba(185, 208, 242, 0.38), transparent 20%),
+    radial-gradient(circle at 90% 6%, rgba(174, 196, 230, 0.32), transparent 18%);
+  pointer-events: none;
+}
+
+.home-hero-summary {
+  border-radius: var(--layout-card-radius, 10px);
+  box-shadow: none;
+  border: var(--layout-card-border-width, 1px) solid var(--layout-card-border-color, #dce4f0);
+  background: var(--layout-card-bg, #fff);
+}
+
+.home-hero-summary__names {
+  font-family: "Great Vibes", cursive;
+  font-size: calc(62px * var(--layout-script-scale, 1) * var(--layout-card-title-size-scale, 1));
+  font-weight: var(--layout-card-title-font-weight, 400);
+  line-height: 1.04;
+  letter-spacing: 0.02em;
+  color: #1a1a2e !important;
+}
+
+.home-hero-summary__meta {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(9px * var(--layout-body-scale, 1) * var(--layout-card-subtitle-size-scale, 1));
+  font-weight: var(--layout-card-subtitle-font-weight, 500);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8a8a9a !important;
+}
+
+.invitation-default-hero h1,
+.invitation-default-carousel h1,
+.invitation-default-section h2 {
+  font-family: "Great Vibes", "Brush Script MT", cursive;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.invitation-default-hero > *,
+.invitation-default-section > *,
+.invitation-default-carousel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.invitation-default-hero p,
+.invitation-default-section,
+.invitation-default-carousel p {
+  letter-spacing: 0.02em;
+}
+
+.invitation-default-section {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--layout-card-radius, 10px);
+  background: var(--layout-card-bg, #fff);
+}
+
+.invitation-default-section::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  right: -70px;
+  bottom: -90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(165, 189, 230, 0.26), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.section-shell {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border-radius: var(--layout-card-radius, 10px);
+  font-size: calc(1rem * var(--layout-body-scale, 1) * var(--layout-card-body-size-scale, 1));
+}
+
+.section-shell__title {
+  font-family: "Great Vibes", cursive;
+  font-weight: var(--layout-card-title-font-weight, 400);
+  font-size: calc(42px * var(--layout-script-scale, 1) * var(--layout-card-title-size-scale, 1));
+  line-height: 1.05;
+  color: #1a1a2e !important;
+}
+
+#site-theme-root .font-script {
+  font-size: calc(1em * var(--layout-script-scale, 1) * var(--layout-card-title-size-scale, 1));
+}
+
+#site-theme-root p {
+  font-weight: var(--layout-page-body-font-weight, 400);
+}
+
+#site-theme-root .section-shell p,
+#site-theme-root .home-hero-summary p,
+#site-theme-root .amorea-hero-carousel p {
+  font-weight: var(--layout-card-body-font-weight, 400);
+}
+
+#site-theme-root .subcard-level-2 {
+  background: var(--layout-subcard-bg, #ffffff);
+  border: var(--layout-subcard-border-width, 1px) solid var(--layout-subcard-border-color, #dce4f0);
+  border-radius: var(--layout-subcard-radius, 8px);
+  box-shadow: var(--layout-subcard-shadow, 0 4px 14px rgba(28, 52, 95, 0.05));
+}
+
+#site-theme-root .subcard-level-2 .subcard-title:not(.amorea-polaroid-label) {
+  font-size: calc(1.875em * var(--layout-subcard-title-size-scale, 1));
+  font-weight: var(--layout-subcard-title-font-weight, 600);
+}
+
+#site-theme-root .subcard-level-2 .subcard-body {
+  font-size: calc(1em * var(--layout-subcard-body-size-scale, 1));
+  font-weight: var(--layout-subcard-body-font-weight, 400);
+}
+
+#site-theme-root .card-surface {
+  background: var(--layout-card-bg, var(--theme-surface));
+  border: var(--layout-card-border-width, 1px) solid var(--layout-card-border-color, #dce4f0);
+  border-radius: var(--layout-card-radius, 10px);
+  box-shadow: var(--layout-card-shadow, 0 6px 22px rgba(28, 52, 95, 0.08));
+}
+
+#site-theme-root.layout-font-elegant {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+}
+
+#site-theme-root.layout-font-editorial {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+}
+
+#site-theme-root.layout-font-modern {
+  font-family: "Josefin Sans", "Inter", sans-serif;
+}
+
+#site-theme-root.layout-font-modern .font-script {
+  font-family: "Cormorant Garamond", serif;
+}
+
+.invitation-default-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--layout-card-radius, 10px);
+}
+
+.invitation-default-carousel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 84%, rgba(179, 201, 238, 0.36), transparent 26%),
+    radial-gradient(circle at 86% 24%, rgba(193, 213, 244, 0.3), transparent 24%);
+  pointer-events: none;
+}

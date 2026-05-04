@@ -1,0 +1,61 @@
+{
+  "name": "wedding",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "prisma generate",
+    "db:local:start": "docker compose up -d postgres",
+    "db:local:stop": "docker compose stop postgres",
+    "dev": "node ./scripts/dev.mjs",
+    "dev:raw": "next dev",
+    "app:all": "node ./scripts/app-all.mjs",
+    "workspace:app:all": "pnpm -w run app:all",
+    "dev:e2e": "node ./scripts/dev-e2e.mjs",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "db:push": "prisma db push",
+    "db:generate": "prisma generate",
+    "db:seed": "prisma db seed",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:e2e": "node ./scripts/run-e2e.mjs"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.100.6",
+    "next": "15.3.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "yaml": "2.8.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@prisma/client": "^6.19.3",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "22.15.3",
+    "@types/react": "19.0.12",
+    "@types/react-dom": "19.0.5",
+    "@vitejs/plugin-react": "^6.0.1",
+    "@vitest/coverage-v8": "^4.1.5",
+    "autoprefixer": "10.4.21",
+    "eslint": "9.26.0",
+    "eslint-config-next": "15.3.0",
+    "jsdom": "^29.1.0",
+    "playwright": "^1.59.1",
+    "postcss": "8.5.3",
+    "prisma": "^6.19.3",
+    "tailwindcss": "3.4.17",
+    "tsx": "^4.21.0",
+    "typescript": "5.8.3",
+    "vitest": "^4.1.5",
+    "zod": "^4.4.1"
+  }
+}
