@@ -1890,6 +1890,14 @@ a.amorea-schedule-location-btn:focus-visible {
     transform: none !important;
   }
 
+  /* Scroll-reveal hides sections until `.is-visible`; without this, reduced-motion users can see a blank page. */
+  .motion-reveal--fade,
+  .motion-reveal--slide-up,
+  .motion-reveal--zoom-in {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
   .amorea-img-stack__card {
     transition: none !important;
   }

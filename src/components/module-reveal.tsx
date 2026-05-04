@@ -19,6 +19,13 @@ export function ModuleReveal({ motion, index, children }: ModuleRevealProps) {
       return;
     }
 
+    let cancelled = false;
+
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVisible(true);
+      return;
+    }
+
     const node = ref.current;
     if (!node) return;
 
@@ -30,11 +37,20 @@ export function ModuleReveal({ motion, index, children }: ModuleRevealProps) {
           observer.disconnect();
         }
       },
-      { threshold: 0.12 }
+      { threshold: 0.08, rootMargin: "0px 0px 25% 0px" }
     );
 
     observer.observe(node);
-    return () => observer.disconnect();
+
+    const failsafe = window.setTimeout(() => {
+      if (!cancelled) setVisible(true);
+    }, 12000);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(failsafe);
+      observer.disconnect();
+    };
   }, [motion.scrollRevealEnabled]);
 
   return (
