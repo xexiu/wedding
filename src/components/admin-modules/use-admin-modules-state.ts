@@ -138,7 +138,8 @@ export function useAdminModulesState(props: Props) {
 
   async function importYaml() {
     try {
-      const imported = await importYamlMutation.mutateAsync(yamlText);
+      const result = await importYamlMutation.mutateAsync(yamlText);
+      const imported = result.site;
       setTemplateId(imported.templateId);
       setCadencePreset(imported.cadencePreset);
       setLayoutSettings(imported.layoutSettings);
@@ -149,7 +150,13 @@ export function useAdminModulesState(props: Props) {
       setModuleProps(imported.moduleProps);
       setThemeTokens(imported.themeTokens);
       queryClient.setQueryData(adminModulesQueryKeys.config(), imported);
+      if (result.locales) {
+        setAvailableLocales(result.locales);
+        queryClient.setQueryData(adminModulesQueryKeys.locales(), result.locales);
+      }
       await queryClient.invalidateQueries({ queryKey: adminModulesQueryKeys.config() });
+      await queryClient.invalidateQueries({ queryKey: adminModulesQueryKeys.locales() });
+      emitLiveConfigUpdatedSignal();
       setStatus(getMutationSuccessStatus("importYaml"));
     } catch {
       setStatus(getMutationErrorStatus("importYaml"));

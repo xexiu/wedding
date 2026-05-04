@@ -182,7 +182,8 @@ export const ADMIN_UI_TEXT_EN: AdminUiText = {
   },
   YAML_PANEL: {
     TITLE: "Config YAML import/export",
-    PLACEHOLDER: "Export to YAML or paste YAML manifest here",
+    PLACEHOLDER:
+      "Full export (v2) includes site + languages. Paste on production and Import. Flat site-only YAML from older exports still works.",
     EXPORT_BUTTON: "Export YAML",
     IMPORT_BUTTON: "Import YAML"
   },
@@ -288,7 +289,8 @@ export const ADMIN_UI_TEXT_ES: AdminUiText = {
   },
   YAML_PANEL: {
     TITLE: "Importar/exportar YAML de configuracion",
-    PLACEHOLDER: "Exporta a YAML o pega aqui el manifiesto YAML",
+    PLACEHOLDER:
+      "La exportacion completa (v2) incluye sitio e idiomas. Pegar en produccion e Importar. El YAML plano antiguo sigue funcionando.",
     EXPORT_BUTTON: "Exportar YAML",
     IMPORT_BUTTON: "Importar YAML"
   },
@@ -394,7 +396,8 @@ export const ADMIN_UI_TEXT_RO: AdminUiText = {
   },
   YAML_PANEL: {
     TITLE: "Import/export YAML configuratie",
-    PLACEHOLDER: "Exporta in YAML sau lipeste manifestul YAML aici",
+    PLACEHOLDER:
+      "Exportul complet (v2) include site + limbi. Lipeste in productie si Importa. YAML vechi (doar site) merge in continuare.",
     EXPORT_BUTTON: "Exporta YAML",
     IMPORT_BUTTON: "Importa YAML"
   },

@@ -1,42 +1,7 @@
-import { LocaleConfigItem, getLocaleConfigs, saveLocaleConfigs } from "@/lib/locales-store";
+import { getLocaleConfigs, saveLocaleConfigs } from "@/lib/locales-store";
+import { parseLocaleConfigsPutBody } from "@/lib/locale-config-payload";
 import { ensureAdminApiGuard } from "@/lib/auth/guards";
 import { NextRequest, NextResponse } from "next/server";
-
-type SaveLocalesPayload = {
-  locales?: LocaleConfigItem[];
-};
-
-function isValidLocaleCode(value: string): boolean {
-  return /^[a-z]{2}(-[a-z0-9]+)?$/i.test(value);
-}
-
-function parsePayload(payload: unknown): LocaleConfigItem[] | null {
-  if (typeof payload !== "object" || payload === null) {
-    return null;
-  }
-
-  const body = payload as SaveLocalesPayload;
-  if (!Array.isArray(body.locales)) {
-    return null;
-  }
-
-  for (const locale of body.locales) {
-    if (
-      !locale ||
-      typeof locale.code !== "string" ||
-      !isValidLocaleCode(locale.code) ||
-      typeof locale.name !== "string" ||
-      typeof locale.enabled !== "boolean" ||
-      typeof locale.isDefault !== "boolean" ||
-      typeof locale.messages !== "object" ||
-      locale.messages === null
-    ) {
-      return null;
-    }
-  }
-
-  return body.locales;
-}
 
 export async function GET(req: NextRequest) {
   const guardResponse = ensureAdminApiGuard(req);
@@ -51,7 +16,7 @@ export async function PUT(req: NextRequest) {
   if (guardResponse) return guardResponse;
 
   const payload = await req.json();
-  const parsed = parsePayload(payload);
+  const parsed = parseLocaleConfigsPutBody(payload);
   if (!parsed) {
     return NextResponse.json({ error: "invalid payload" }, { status: 400 });
   }

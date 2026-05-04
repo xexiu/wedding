@@ -45,7 +45,7 @@ describe("query-hooks", () => {
   });
 
   test("useImportYamlMutation delegates to patch fetcher", async () => {
-    vi.mocked(patchAdminModulesYaml).mockResolvedValueOnce({} as never);
+    vi.mocked(patchAdminModulesYaml).mockResolvedValueOnce({ site: {} as never });
     const { result } = renderHook(() => useImportYamlMutation(), { wrapper: createWrapper() });
     await result.current.mutateAsync("yaml");
     expect(patchAdminModulesYaml).toHaveBeenCalledWith("yaml");

@@ -1,7 +1,12 @@
 "use client";
 
 import { ADMIN_API_ROUTES } from "@/components/admin-modules/constants";
-import { LocaleConfigPayload, RsvpAdminPayload, SiteConfigPayload } from "@/components/admin-modules/types";
+import {
+  LocaleConfigPayload,
+  RsvpAdminPayload,
+  SiteConfigPayload,
+  SiteYamlImportResult
+} from "@/components/admin-modules/types";
 
 async function parseJson<T>(response: Response): Promise<T> {
   if (!response.ok) {
@@ -25,13 +30,13 @@ export async function putAdminModulesConfig(payload: SiteConfigPayload): Promise
   return parseJson<SiteConfigPayload>(response);
 }
 
-export async function patchAdminModulesYaml(yaml: string): Promise<SiteConfigPayload> {
+export async function patchAdminModulesYaml(yaml: string): Promise<SiteYamlImportResult> {
   const response = await fetch(ADMIN_API_ROUTES.MODULES, {
     method: "PATCH",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ yaml })
   });
-  return parseJson<SiteConfigPayload>(response);
+  return parseJson<SiteYamlImportResult>(response);
 }
 
 export async function postAdminModulesYamlExport(): Promise<string> {

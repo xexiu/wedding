@@ -6,6 +6,22 @@ vi.mock("next/cache", () => ({
   revalidatePath: vi.fn()
 }));
 
+vi.mock("@/lib/locales-store", async () => {
+  const { defaultMessagesByLocale } = await import("@/config/admin-ui-text-bundles");
+  return {
+    getLocaleConfigs: vi.fn(async () => [
+      {
+        code: "en",
+        name: "EN",
+        enabled: true,
+        isDefault: true,
+        messages: defaultMessagesByLocale("en")
+      }
+    ]),
+    saveLocaleConfigs: vi.fn(async <T,>(x: T) => x)
+  };
+});
+
 vi.mock("@/lib/site-config-store", () => ({
   getSiteConfig: vi.fn(async () => ({
     templateId: "classic",
@@ -123,10 +139,14 @@ describe("/api/admin/modules", () => {
     expect(res.status).toBe(200);
   });
 
-  it("exports yaml on POST", async () => {
+  it("exports yaml bundle v2 (site + locales) on POST", async () => {
     const req = new NextRequest("http://test/api/admin/modules", { method: "POST" });
     const res = await POST(req);
     expect(res.status).toBe(200);
+    const body = (await res.json()) as { yaml?: string };
+    expect(body.yaml).toContain("exportVersion: 2");
+    expect(body.yaml).toContain("locales:");
+    expect(body.yaml).toContain("site:");
   });
 
   it("imports yaml on PATCH", async () => {

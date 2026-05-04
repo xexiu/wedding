@@ -36,6 +36,12 @@ export type LocaleConfigPayload = {
   messages: Messages;
 };
 
+/** Response from PATCH /api/admin/modules (YAML import): site manifest plus optional locales when bundle includes them. */
+export type SiteYamlImportResult = {
+  site: SiteConfigPayload;
+  locales?: LocaleConfigPayload[];
+};
+
 export type LocaleCode = Locale;
 
 export type RsvpEventConfigPayload = {
