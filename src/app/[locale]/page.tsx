@@ -16,14 +16,29 @@ import { getEnabledLocaleCodes } from "@/lib/locales-store";
 import { getSiteConfig } from "@/lib/site-config-store";
 import { getTemplateStyles, getTemplateThemeTokenValues } from "@/themes/templates";
 import { resolveThemeTokenValues } from "@/themes/theme-tokens";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 /** Public home reads live DB config; do not static-cache so admin edits show up after save. */
 export const dynamic = "force-dynamic";
 
+function resolveForcedPublicLocale(raw: string | undefined, allowedLocales: string[]): string | null {
+  if (raw === undefined || raw === "") {
+    return null;
+  }
+  const token = raw.trim().toLowerCase();
+  if (!token || token === "false" || token === "off" || token === "0") {
+    return null;
+  }
+  return isLocale(token, allowedLocales) ? token : null;
+}
+
 export default async function LocalizedHome({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const enabledLocales = await getEnabledLocaleCodes();
+  const forcedLocale = resolveForcedPublicLocale(process.env.FORCE_PUBLIC_LOCALE, enabledLocales);
+  if (forcedLocale && locale !== forcedLocale) {
+    redirect(`/${forcedLocale}`);
+  }
   if (!isLocale(locale, enabledLocales)) return notFound();
 
   const config = await getSiteConfig();
