@@ -157,12 +157,16 @@ export async function createPublicRsvpSubmission(input: PublicRsvpSubmissionInpu
   if (!normalizedName) {
     throw new Error("name is required");
   }
+  const normalizedPhone = input.phone.trim();
+  if (!normalizedPhone) {
+    throw new Error("phone is required");
+  }
 
   await prisma.guest.create({
     data: {
       name: normalizedName,
       email: normalizeString(input.email) || null,
-      phone: normalizeString(input.phone) || null,
+      phone: normalizedPhone,
       group: input.group,
       rsvpStatus: input.rsvpStatus,
       dietaryRestrictions: normalizeString(input.dietaryRestrictions) || null,

@@ -43,6 +43,10 @@ function guestGroupLabel(group: GuestGroup, ui: ReturnType<typeof getSectionUiTe
   }
 }
 
+function withRequiredSuffix(label: string, suffix: string): string {
+  return `${label} ${suffix}`.trim();
+}
+
 export function RsvpSection({ details, props, locale, cadencePreset, theme }: RsvpSectionProps) {
   const uiText = getSectionUiText(locale);
   const SECTION_PIXEL_TOKENS = useMemo(() => getSectionPixelTokens(cadencePreset), [cadencePreset]);
@@ -315,7 +319,7 @@ export function RsvpSection({ details, props, locale, cadencePreset, theme }: Rs
               </div>
               <div className="amorea-rsvp-field">
                 <label className="amorea-rsvp-label" htmlFor={id("phone")}>
-                  {translate(details.rsvpPhoneLabel, locale)}
+                  {withRequiredSuffix(translate(details.rsvpPhoneLabel, locale), uiText.rsvpRequiredFieldSuffix)}
                 </label>
                 <input
                   id={id("phone")}
@@ -325,6 +329,7 @@ export function RsvpSection({ details, props, locale, cadencePreset, theme }: Rs
                   onChange={(event) => setPhone(event.target.value)}
                   className={`amorea-rsvp-input${inputErrorRing("phone")}`}
                   aria-invalid={fieldErrors.phone ? true : undefined}
+                  required
                 />
               </div>
               <div className="amorea-rsvp-field">
@@ -480,7 +485,7 @@ export function RsvpSection({ details, props, locale, cadencePreset, theme }: Rs
           </div>
           <div className={SECTION_PIXEL_TOKENS.RSVP.FIELD}>
             <label className={SECTION_PIXEL_TOKENS.RSVP.INPUT_LABEL} htmlFor={id("phone")}>
-              {translate(details.rsvpPhoneLabel, locale)}
+              {withRequiredSuffix(translate(details.rsvpPhoneLabel, locale), uiText.rsvpRequiredFieldSuffix)}
             </label>
             <input
               id={id("phone")}
@@ -490,6 +495,7 @@ export function RsvpSection({ details, props, locale, cadencePreset, theme }: Rs
               onChange={(event) => setPhone(event.target.value)}
               className={`${SECTION_PIXEL_TOKENS.RSVP.INPUT}${inputErrorRing("phone")}`}
               aria-invalid={fieldErrors.phone ? true : undefined}
+              required
             />
           </div>
           <div className={SECTION_PIXEL_TOKENS.RSVP.FIELD}>

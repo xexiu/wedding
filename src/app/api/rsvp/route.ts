@@ -12,7 +12,10 @@ const publicRsvpSchema = z.object({
     (v) => (typeof v === "string" ? v.trim() : ""),
     z.union([z.literal(""), z.string().email("Enter a valid email address")])
   ),
-  phone: z.preprocess((v) => (typeof v === "string" ? v : ""), z.string()),
+  phone: z.preprocess(
+    (v) => (typeof v === "string" ? v.trim() : ""),
+    z.string().min(1, "Phone is required")
+  ),
   notes: z.preprocess((v) => (typeof v === "string" ? v : ""), z.string()),
   dietaryRestrictions: z.preprocess((v) => (typeof v === "string" ? v : ""), z.string()),
   plusOneNames: z.array(z.string()),

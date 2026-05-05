@@ -26,6 +26,7 @@ type SectionUiText = {
   rsvpGuestGroupFriends: string;
   rsvpGuestGroupWork: string;
   rsvpGuestGroupOther: string;
+  rsvpRequiredFieldSuffix: string;
   rsvpRequestedSongsLabel: string;
   rsvpSubmitSuccess: string;
   rsvpSubmitError: string;
@@ -67,6 +68,7 @@ const SECTION_UI_TEXT_EN: SectionUiText = {
   rsvpGuestGroupFriends: "Friends",
   rsvpGuestGroupWork: "Work",
   rsvpGuestGroupOther: "Other",
+  rsvpRequiredFieldSuffix: "(required)",
   rsvpRequestedSongsLabel: "Requested song(s)",
   rsvpSubmitSuccess: "Your RSVP has been saved",
   rsvpSubmitError: "Could not save RSVP. Please try again.",
@@ -108,6 +110,7 @@ const SECTION_UI_TEXT_ES: SectionUiText = {
   rsvpGuestGroupFriends: "Amigos",
   rsvpGuestGroupWork: "Trabajo",
   rsvpGuestGroupOther: "Otro",
+  rsvpRequiredFieldSuffix: "(obligatorio)",
   rsvpRequestedSongsLabel: "Cancion(es) solicitada(s)",
   rsvpSubmitSuccess: "Tu confirmacion fue guardada",
   rsvpSubmitError: "No se pudo guardar la confirmacion. Intenta de nuevo.",
@@ -149,6 +152,7 @@ const SECTION_UI_TEXT_RO: SectionUiText = {
   rsvpGuestGroupFriends: "Prieteni",
   rsvpGuestGroupWork: "Serviciu",
   rsvpGuestGroupOther: "Altul",
+  rsvpRequiredFieldSuffix: "(obligatoriu)",
   rsvpRequestedSongsLabel: "Melodie(i) dorita(e)",
   rsvpSubmitSuccess: "Confirmarea ta a fost salvata",
   rsvpSubmitError: "Nu am putut salva confirmarea. Incearca din nou.",
