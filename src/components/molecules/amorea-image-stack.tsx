@@ -159,11 +159,8 @@ export function AmoreaImageStack({ slides, locale, details, stackAutoplayMs }: A
         </div>
 
         <div className="amorea-img-stack__col amorea-img-stack__col--meta">
-          <p className="amorea-img-stack__counter" aria-live="polite">
-            {k + 1}/{n}
-          </p>
-          <h2 className="amorea-img-stack__title">{titleText}</h2>
-          <p className="amorea-img-stack__subtitle">{subText}</p>
+          {/* <h2 className="amorea-img-stack__title">{titleText}</h2>
+          <p className="amorea-img-stack__subtitle">{subText}</p> */}
           <div className="amorea-img-stack__controls">
             <button type="button" className="amorea-img-stack__btn" aria-label="Previous photo" onClick={() => go(-1)}>
               ‹
